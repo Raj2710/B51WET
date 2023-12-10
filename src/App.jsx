@@ -1,6 +1,9 @@
 import { useState } from "react"
 import Dashboard from "./components/Dashboard"
 import Sidebar from "./components/Sidebar"
+import AddUser from "./components/AddUser"
+import EditUser from "./components/EditUser"
+import {BrowserRouter,Routes,Route,Navigate} from 'react-router-dom'
 function App() {
   let [user,setUser] = useState([
     {
@@ -26,11 +29,17 @@ function App() {
   } 
   ])
   return <>
+  <BrowserRouter>
   <div id="wrapper">
       <Sidebar/>
-      <Dashboard user={user} setUser={setUser}/>
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard user={user} setUser={setUser}/>}/>
+        <Route path="/add-user" element={<AddUser user={user} setUser={setUser}/>}/>
+        <Route path="/edit-user/:id" element={<EditUser user={user} setUser={setUser}/>}/>
+        <Route path="*" element={<Navigate to='/dashboard'/>}/>
+      </Routes>
   </div>
+  </BrowserRouter>
   </>
 }
-
 export default App

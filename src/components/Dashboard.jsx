@@ -2,7 +2,7 @@ import React from 'react'
 import Card from './Card'
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-
+import { useNavigate } from 'react-router-dom';
 function Dashboard({user,setUser}) {
     let data = [
         {
@@ -34,6 +34,8 @@ function Dashboard({user,setUser}) {
             color:"warning"
         }
     ]
+
+    const navigate = useNavigate()
 
     const handleDelete = (i)=>{
         //shallow copy technique won't work
@@ -94,7 +96,7 @@ function Dashboard({user,setUser}) {
                                     <td>{e.mobile}</td>
                                     <td>{e.batch}</td>
                                     <td>
-                                        <Button variant='info'>Edit</Button>
+                                        <Button variant='info' onClick={()=>navigate(`/edit-user/${i}`)}>Edit</Button>
                                         &nbsp;
                                         <Button variant='danger' onClick={()=>handleDelete(i)}>Delete</Button>
                                     </td>
