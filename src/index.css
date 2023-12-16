@@ -1,0 +1,19 @@
+.header{
+  text-align: center;
+}
+
+.add-wrapper{
+display: grid;
+grid-template-columns: 30% 60% 10%;
+gap: 20px;
+padding-bottom: 25px;
+}
+
+.icons{
+  cursor: pointer;
+}
+
+.icons-wrapper{
+  display: flex;
+  justify-content: space-around;
+}
