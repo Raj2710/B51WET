@@ -1,9 +1,10 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
-
-function AddUser({user,setUser}) {
+import {GeneralContext} from '../main'
+import { UserContext } from '../utils/UserContextComponent';
+function AddUser() {
   let [firstName,setFName] = useState("")
   let [lastName,setLName] = useState("")
   let [email,setEmail] = useState("")
@@ -12,8 +13,13 @@ function AddUser({user,setUser}) {
 
   let navigate = useNavigate()
 
+  const gContext = useContext(GeneralContext)
+  const userContext = useContext(UserContext)
+
+  // console.log(gContext)
+
   const handleSubmit = ()=>{
-      let newArray = [...user]
+      let newArray = [...userContext.user]
       newArray.push({
         firstName,
         lastName,
@@ -21,7 +27,7 @@ function AddUser({user,setUser}) {
         mobile,
         batch
       })
-      setUser(newArray)
+      userContext.setUser(newArray)
       navigate('/dashboard')
   }
   return <>

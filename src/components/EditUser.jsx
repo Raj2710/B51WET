@@ -1,7 +1,8 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useState,useContext} from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useParams, useNavigate } from 'react-router-dom'
+import { UserContext } from '../utils/UserContextComponent';
 function EditUser({user,setUser}) {
   let params = useParams()
   let navigate = useNavigate()
@@ -12,14 +13,16 @@ function EditUser({user,setUser}) {
   let [mobile,setMobile] = useState("")
   let [batch,setBatch] = useState("")
   
+  const userContext = useContext(UserContext)
+
   useEffect(()=>{
-    if(params.id<user.length)
+    if(params.id<userContext.user.length)
     {
-      setFName(user[params.id].firstName)
-      setLName(user[params.id].lastName)
-      setEmail(user[params.id].email)
-      setMobile(user[params.id].mobile)
-      setBatch(user[params.id].batch)
+      setFName(userContext.user[params.id].firstName)
+      setLName(userContext.user[params.id].lastName)
+      setEmail(userContext.user[params.id].email)
+      setMobile(userContext.user[params.id].mobile)
+      setBatch(userContext.user[params.id].batch)
     }
     else
     {
@@ -30,7 +33,7 @@ function EditUser({user,setUser}) {
 
 
   const handleEdit = ()=>{
-    let newArray = [...user]
+    let newArray = [...userContext.user]
     newArray.splice(params.id,1,{
       firstName,
       lastName,
@@ -38,7 +41,7 @@ function EditUser({user,setUser}) {
       mobile,
       batch
     })
-    setUser(newArray)
+    userContext.setUser(newArray)
     navigate('/dashboard')
   }
 

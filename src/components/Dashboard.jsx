@@ -1,9 +1,11 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import Card from './Card'
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
-function Dashboard({user,setUser}) {
+import {GeneralContext} from '../main'
+import {UserContext} from '../utils/UserContextComponent'
+function Dashboard() {
     let data = [
         {
             isProgress:false,
@@ -35,18 +37,15 @@ function Dashboard({user,setUser}) {
         }
     ]
 
+    const gContext = useContext(GeneralContext)
+    const userContext = useContext(UserContext)
+
     const navigate = useNavigate()
 
     const handleDelete = (i)=>{
-        //shallow copy technique won't work
-        // user.splice(i,1)
-        // setUser(user)
-        // console.log(user)
-
-        //deep cpoy to achieve Immutability
-        let newArray = [...user]
+        let newArray = [...userContext.user]
         newArray.splice(i,1)
-        setUser(newArray)
+        userContext.setUser(newArray)
     }
   return <>
     <div id="content-wrapper" className="d-flex flex-column">
@@ -87,7 +86,7 @@ function Dashboard({user,setUser}) {
                     </thead>
                     <tbody>
                         {
-                            user.map((e,i)=>{
+                            userContext.user.map((e,i)=>{
                                 return <tr key={i}>
                                     <td>{i+1}</td>
                                     <td>{e.firstName}</td>
