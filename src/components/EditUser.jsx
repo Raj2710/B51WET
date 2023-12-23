@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useParams, useNavigate } from 'react-router-dom'
 import { UserContext } from '../utils/UserContextComponent';
+import { Actions } from '../utils/Actions';
 function EditUser({user,setUser}) {
   let params = useParams()
   let navigate = useNavigate()
@@ -33,15 +34,13 @@ function EditUser({user,setUser}) {
 
 
   const handleEdit = ()=>{
-    let newArray = [...userContext.user]
-    newArray.splice(params.id,1,{
+    userContext.userDispatch({action:Actions.EDIT,id:params.id,data:{
       firstName,
       lastName,
       email,
       mobile,
       batch
-    })
-    userContext.setUser(newArray)
+    }})
     navigate('/dashboard')
   }
 

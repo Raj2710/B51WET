@@ -9,6 +9,8 @@ import NestedExample from "./components/NestedExample/NestedExample"
 import Class from './components/NestedExample/Class'
 import Query from './components/NestedExample/Query'
 import Task from './components/NestedExample/Task'
+import UseRef from "./components/UseRef"
+import UseReducer from "./components/UseReducer"
 function App() {
   
   return <>
@@ -24,7 +26,10 @@ function App() {
             <Route path='query' element={<Query/>}/>
             <Route path='task' element={<Task/>}/>
         </Route>
+        <Route path="/useref" element={<UseRef/>}/>
+        <Route path="/usereducer" element={<UseReducer/>}/>
         <Route path="*" element={<Navigate to='/dashboard'/>}/>
+
       </Routes>
   </div>
   </BrowserRouter>
