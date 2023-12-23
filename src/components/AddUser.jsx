@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
 import {GeneralContext} from '../main'
 import { UserContext } from '../utils/UserContextComponent';
-import { Actions } from '../utils/Actions';
 function AddUser() {
   let [firstName,setFName] = useState("")
   let [lastName,setLName] = useState("")
@@ -20,13 +19,15 @@ function AddUser() {
   // console.log(gContext)
 
   const handleSubmit = ()=>{
-      userContext.userDispatch({action:Actions.ADD,data:{
+      let newArray = [...userContext.user]
+      newArray.push({
         firstName,
         lastName,
         email,
         mobile,
         batch
-      }})
+      })
+      userContext.setUser(newArray)
       navigate('/dashboard')
   }
   return <>

@@ -2,7 +2,6 @@ import React,{useContext} from 'react'
 import Card from './Card'
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
-import { Actions } from '../utils/Actions';
 import { useNavigate } from 'react-router-dom';
 import {GeneralContext} from '../main'
 import {UserContext} from '../utils/UserContextComponent'
@@ -37,9 +36,17 @@ function Dashboard() {
             color:"warning"
         }
     ]
+
     const gContext = useContext(GeneralContext)
     const userContext = useContext(UserContext)
+
     const navigate = useNavigate()
+
+    const handleDelete = (i)=>{
+        let newArray = [...userContext.user]
+        newArray.splice(i,1)
+        userContext.setUser(newArray)
+    }
   return <>
     <div id="content-wrapper" className="d-flex flex-column">
         <div id="content">
@@ -90,7 +97,7 @@ function Dashboard() {
                                     <td>
                                         <Button variant='info' onClick={()=>navigate(`/edit-user/${i}`)}>Edit</Button>
                                         &nbsp;
-                                        <Button variant='danger' onClick={()=>userContext.userDispatch({action:Actions.DELETE,id:i})}>Delete</Button>
+                                        <Button variant='danger' onClick={()=>handleDelete(i)}>Delete</Button>
                                     </td>
                                 </tr>
                             })

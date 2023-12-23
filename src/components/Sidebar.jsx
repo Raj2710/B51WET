@@ -2,7 +2,7 @@ import React,{useContext} from 'react'
 import {Link} from 'react-router-dom'
 import {UserContext} from '../utils/UserContextComponent'
 function Sidebar() {
-    // console.log(useContext(UserContext))
+    console.log(useContext(UserContext))
   return <>
   <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <Link to='/dashboard' className="sidebar-brand d-flex align-items-center justify-content-center">
@@ -28,18 +28,6 @@ function Sidebar() {
         <Link to={'/nested-example'} className="nav-link">
             <i className="fas fa-fw fa-clipboard"></i>
             <span>Nested Routing</span>
-        </Link>
-    </li>
-    <li className="nav-item">
-        <Link to={'/useref'} className="nav-link">
-            <i className="fas fa-fw fa-clipboard"></i>
-            <span>Hook - useRef</span>
-        </Link>
-    </li>
-    <li className="nav-item">
-        <Link to={'/usereducer'} className="nav-link">
-            <i className="fas fa-fw fa-cog"></i>
-            <span>Hook - useReducer</span>
         </Link>
     </li>
     <hr className="sidebar-divider"/>
