@@ -30,3 +30,16 @@ Fontawesome using react
 2. npm i --save @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-brands-svg-icons
 3. npm i --save @fortawesome/react-fontawesome@latest
 4. npm install babel-plugin-macros
+
+
+
+Redux Steps
+1. npm install @reduxjs/toolkit react-redux
+2. Create Redux Store
+3. Import store and Provider in main.jsx
+4. Wrap App component with Provider and pass the store props to Provider
+5. Create a Redux State Slice
+6. Provide the initial state and reducer functions
+7. Export the actions from the reducer functions
+8. Export the blog slice reducer
+9. Import BlogSlice Reucer in Store and pass it to store-reducers.
