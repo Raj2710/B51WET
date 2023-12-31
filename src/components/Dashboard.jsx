@@ -8,6 +8,7 @@ import { saveAllBlogs,deleteBlog,toggleBlog } from '../redux/BlogSlice';
 function Dashboard() {
   let blogs = useSelector(state=>state.blogs)
   let dispatch = useDispatch()
+  
   const getBlogs = async()=>{
       try {
         let res = await axios.get(API_URL)
@@ -16,6 +17,35 @@ function Dashboard() {
         console.log(error)
       }
   }
+
+  const handleToggle = async(blog)=>{
+    try {
+    let currentBlog = {...blog}
+    currentBlog.status = !currentBlog.status
+    dispatch(toggleBlog({blog}))
+    let res = await axios.put(`${API_URL}/${currentBlog.id}`,currentBlog)
+    if(res.status===200)
+    {
+      getBlogs()
+    }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleDelete = async(blog)=>{
+    try {
+    dispatch(deleteBlog({id:blog.id}))
+    let res = await axios.delete(`${API_URL}/${blog.id}`)
+    if(res.status===200)
+    {
+      getBlogs()
+    }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(()=>{
     getBlogs()
   },[])
@@ -41,12 +71,12 @@ function Dashboard() {
                 <td><div className='description'>{e.description}</div></td>
                 <td>
                 <label className="switch">
-                  <input type="checkbox" defaultChecked={e.status} onClick={()=>dispatch(toggleBlog({blog:e}))}/>
+                  <input type="checkbox" defaultChecked={e.status} onClick={()=>handleToggle(e)}/>
                   <span className="slider round"></span>
                 </label>
                 </td>
                 <td>
-                  <i className="fa-solid fa-trash cursor-pointer" onClick={()=>dispatch(deleteBlog({id:e.id}))}></i>
+                  <i className="fa-solid fa-trash cursor-pointer" onClick={()=>handleDelete(e)}></i>
                   &nbsp;
                   <i className="fa-solid fa-pen"></i>  
                 </td>

@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import BlogsService from '../apiService/Blogs'
 export const blogSlice = createSlice({
     name:'blogs',
     initialState:[],
@@ -18,7 +17,6 @@ export const blogSlice = createSlice({
                     break;
                 }
             }
-            BlogsService.deleteBlog(state[index].id)
             state.splice(index,1)
             return state
         },
@@ -33,7 +31,6 @@ export const blogSlice = createSlice({
                 }
             }
             state[index].status=!state[index].status
-            BlogsService.toggleBlog(state[index])
             return state
         }
     }
