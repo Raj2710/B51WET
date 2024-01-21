@@ -9,5 +9,5 @@ Deployment in Render
 3. Build and deploy from a Git repository
 4. Select your repository and Branch to deploy
 5. Runtime - Node
-6. Do not change build command leave it as it is
+6. Build Command - npm install
 7. Start Command - npm start(if you have configured in package.json) or node src/index.js
