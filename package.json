@@ -1,0 +1,16 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "npm init - to initalise package.json",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev":"nodemon src/index.js",
+    "start":"node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
