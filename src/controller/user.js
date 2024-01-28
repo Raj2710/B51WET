@@ -1,9 +1,6 @@
-import mongodb,{ MongoClient } from 'mongodb'
 import userModel from '../model/user.js'
 import dotenv from 'dotenv'
 dotenv.config()
-
-const client = new MongoClient(process.env.DB_URL)
 
 const getAllUsers = async(req,res)=>{
     try {
