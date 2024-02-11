@@ -1,0 +1,19 @@
+.loginWrapper{
+    margin: auto;
+    width: 40%;
+}
+.loginHeader{
+    text-align: center;
+}
+
+.link{
+    text-decoration: none;
+    color: inherit;
+}
+
+@media only screen and (max-width:600px) {
+    .loginWrapper{
+        
+        width: 100%;
+    }
+}
