@@ -10,8 +10,7 @@ const getAllUsers = async(req,res)=>{
         })
     } catch (error) {
         res.status(500).send({
-            message:"Internal Server Error",
-            error: error.message
+            message:error.message || "Internal Server Error"
         })
     }
 }
@@ -25,8 +24,7 @@ const getUserById = async(req,res)=>{
         })
     } catch (error) {
         res.status(500).send({
-            message:"Internal Server Error",
-            error: error.message
+            message:error.message || "Internal Server Error"
         })
     }
 }
@@ -38,7 +36,7 @@ const signUp = async(req,res)=>{
         {
             req.body.password = await Auth.hashPassword(req.body.password)
             await UserModel.create(req.body)
-            res.status(200).send({
+            res.status(201).send({
                 message:"User Sign Up Successfull"
             })
         }
@@ -51,8 +49,7 @@ const signUp = async(req,res)=>{
 
     } catch (error) {
         res.status(500).send({
-            message:"Internal Server Error",
-            error: error.message
+            message:error.message || "Internal Server Error"
         })
     }
 }
@@ -68,13 +65,14 @@ const login = async(req,res)=>{
                     name:user.name,
                     email:user.email,
                     id:user._id,
-                    role:user.role
+                    role:user.role,
                 })
 
                 res.status(200).send({
                     message:"Login Successfull",
                     name:user.name,
                     role:user.role,
+                    id:user._id,
                     token
                 })
             }
@@ -93,8 +91,7 @@ const login = async(req,res)=>{
         }
     } catch (error) {
         res.status(500).send({
-            message:"Internal Server Error",
-            error: error.message
+            message:error.message || "Internal Server Error"
         })
     }
 }
