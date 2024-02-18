@@ -31,10 +31,8 @@ function Login() {
           sessionStorage.setItem('name',res.data.name)
           sessionStorage.setItem('userId',res.data.id)
           toast.success(res.data.message)
-          if(res.data.role==='admin')
+          if(res.data.role==='admin' || res.data.role==='superAdmin')
             navigate('/dashboard')
-          else
-            navigate(`/profile/${res.data.id}`)
         }
       }
       else

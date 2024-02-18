@@ -9,11 +9,11 @@ Persona 1 - User
 
 Persona 2 - Admin
 1. Admin should have a login path - API Done
-2. Admin Dashboard - Category of SR (Open/Assigned/Clossed) - API Not Done
+2. Admin Dashboard - Category of SR (Open/Assigned/Clossed) - API Done
 3. Admins can assign any open SR to themselves - API Done
 4. Admin can close the SR by providing the resolution - API Done
 
 Persona 3 - Super Admin(Bonus)
 1. Super Admin have a login path - API Done
-2. Super Admin Dashboard - Category of SR (Open/Assigned/Clossed)
-3. Admin Management - Create/Read/Update/Delete
+2. Super Admin Dashboard - Category of SR (Open/Assigned/Clossed) - API Done
+3. Admin Management - Create/Read - API-Done

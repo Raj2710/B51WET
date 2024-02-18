@@ -4,7 +4,7 @@ function UserGuard({children}) {
   let role = sessionStorage.getItem('role')
   let token = sessionStorage.getItem('token')
 
-  return token && (role === 'admin' || role==='user') ? children : <Navigate to='/login'/>
+  return token && (role === 'admin' || role === 'superAdmin') ? children : <Navigate to='/login'/>
 }
 
 export default UserGuard

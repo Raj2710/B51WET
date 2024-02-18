@@ -16,6 +16,7 @@ function TopBar() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link><Link to='/dashboard' className='link'>Dashboard</Link></Nav.Link>
+              {role==='superAdmin'?<Nav.Link><Link to='/user' className='link'>User Management</Link></Nav.Link>:<></>}
             </Nav>
           </Navbar.Collapse>
           <Button variant='danger' onClick={()=>logout()}>Logout</Button>
