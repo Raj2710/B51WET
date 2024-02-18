@@ -11,14 +11,15 @@ const msg = {
   text: html,
   html: html,
 }
-sgMail
-  .send(msg)
-  .then(() => {
-    console.log('Email sent')
-  })
-  .catch((error) => {
-    console.error(error)
-  })
+// sgMail
+//   .send(msg)
+//   .then(() => {
+//     console.log('Email sent')
+//   })
+//   .catch((error) => {
+//     console.error(error)
+//   })
+return 0
 }
 
 const sendConfrimMail = async(data)=>{
